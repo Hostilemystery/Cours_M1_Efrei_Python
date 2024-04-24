@@ -4,7 +4,7 @@ variable dénommée “myArray42Len”
 
 """
 
-myArray42 = ['q','u','a','r','a','n','t','e','-','d','e','u','x']
+myArray42 = [*'quarante-deux']
 
 myArray42Len = len(myArray42)
 
