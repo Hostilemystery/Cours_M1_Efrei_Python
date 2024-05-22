@@ -13,3 +13,13 @@ for i in range(len(liste)):
     tables_multiplication[liste[i]] = result
 
 print(tables_multiplication)
+
+
+# Meilleur alternative
+
+liste = [1, 2, 3, 5, 8]
+
+def myfunc(a):
+    return [a*i for i in range(11)]
+
+print(list(map(myfunc, liste)))

@@ -9,4 +9,8 @@ for i in range(1, hauteur + 1):
     print(espaces + parantheses)
 
 
+#Alternative
 
+for i in range(1, hauteur + 1):
+    parantheses = '[' * i + ' '  + ']' * i
+    print(parantheses.center(10*3))

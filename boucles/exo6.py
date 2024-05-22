@@ -5,7 +5,7 @@ en ordre croissant par exemple si j’ai “[5, 4, 3, 2, 1]” le résultat sera
 Vous n’avez pas le droit d’utiliser de fonction.
 """
 
-nbr = [12,4,78,6,5]
+nbr = [5, 4, 3, 2, 1]
 
 for i in nbr:
     for j in range(len(nbr)-1):

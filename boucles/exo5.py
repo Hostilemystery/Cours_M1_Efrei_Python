@@ -4,6 +4,10 @@ imbriquées : * ** *** **** *****
 """
 
 var = ""
-for i in range(0,6):
+for i in range(1,6):
     var += "*"*i+" "
 print(var)
+
+#Meilleur alternative 
+print(' '.join(list(map(lambda x : x*'*', range(1,6)))))
+    
