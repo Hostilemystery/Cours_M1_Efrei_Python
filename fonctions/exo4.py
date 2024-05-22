@@ -7,32 +7,37 @@
  dans votre console.
 """
 
-
-def tableGenerator(donnee, titre):
-    largeur_colone = [max(len(str(item)) for item in col) for col in zip(*donnee, titre)]
-    
-    ligne_horizontal = '+' + '+'.join('-' * (largeur + 2) for largeur in largeur_colone) + '+'
-    
-    # Create the header row
-    titre_ligne = '| ' + ' | '.join(f'{titre:<{largeur_colone[i]}}' for i, titre in enumerate(titre)) + ' |'
-    
-    
-    donee_ligne = []
-    for row in donnee:
-        donee_ligne.append('| ' + ' | '.join(f'{item:<{largeur_colone[i]}}' for i, item in enumerate(row)) + ' |')
-    
-    
-    table = [ligne_horizontal, titre_ligne, ligne_horizontal] + donee_ligne + [ligne_horizontal]
-    return '\n'.join(table)
-
-# Example data and headers
-titre = ["", "Test1", "Test2", "Test3"]
-donnee = [
+table = [
+    ["", "Test1", "Test2", "Test3"],
     ["Data1", "1", "2", "3.33"],
-    ["Data2", "3", "2", "1"],
-    ["Data3", "6.7", "4", "2"]
+    ["Data2","3", "2", "1"],
+    ["Data3","6.7", "4", "2"]
 ]
 
-# Generate and print the table
-table = tableGenerator(donnee, titre)
-print(table)
+def get_biggest_chars(table):
+    headers = [""]*len(table[0])
+    for row in table:
+        for i, element in enumerate(row):
+            if len(str(element)) > len(headers[i]):
+                headers[i] = element
+    return headers
+
+# print(get_biggest_chars(table))
+
+def tableGenerator(table):
+    biggestWordsByCol = get_biggest_chars(table)
+    separator = f'|{'|'.join(list(map(lambda x: len(x) * '-', biggestWordsByCol)))}'
+    for i, row in enumerate(table):
+        rowStr = ""
+        
+        for j, col in enumerate(row):
+          spaces = (len(biggestWordsByCol[i]) - len(col)) * ' '
+          rowStr += f'|{col}{spaces}'
+        
+        if(not i) :
+           rowStr += f'|\n{separator}'
+        print(f'{rowStr}|')
+
+
+
+tableGenerator(table)
